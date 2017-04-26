@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
 	def buildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "1"
@@ -58,4 +61,9 @@ dependencies {
 	})
 	compile 'com.android.support:appcompat-v7:25.3.1'
 	testCompile 'junit:junit:4.12'
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+
+repositories {
+	mavenCentral()
 }
