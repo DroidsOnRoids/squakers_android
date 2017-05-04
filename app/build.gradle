@@ -1,21 +1,55 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
+	def buildNumber = System.getenv("BITRISE_BUILD_NUMBER") ?: "1"
+
 	compileSdkVersion 25
 	buildToolsVersion "25.0.3"
 	defaultConfig {
 		applicationId "com.droidsonroids.squakers"
 		minSdkVersion 19
 		targetSdkVersion 25
-		versionCode 1
-		versionName "1.0"
+		versionCode buildNumber.toInteger()
+		versionName "0.0" + buildNumber
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 		vectorDrawables.useSupportLibrary = true
+		buildConfigField 'String', 'HOCKEYAPP_KEY', System.getenv("HOCKEYAPP_KEY").toString() ?: "NONE"
+	}
+	signingConfigs {
+		if (System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") != null) {
+			release {
+				keyAlias System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
+				keyPassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
+				storeFile file(System.getenv("HOME") + "/keystores/squakers_keystore.jks")
+				storePassword System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
+			}
+		} else {
+			def keystorePropertiesFile = rootProject.file("keystore.properties");
+			def keystoreProperties = new Properties()
+			keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+			release {
+				storeFile file(keystoreProperties['storeFile'])
+				storePassword keystoreProperties['storePassword']
+				keyAlias keystoreProperties['keyAlias']
+				keyPassword keystoreProperties['keyPassword']
+			}
+		}
 	}
 	buildTypes {
 		release {
 			minifyEnabled true
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
+			buildConfigField 'boolean', 'CRASH_REPORTING_ENABLED', 'true'
+			buildConfigField 'boolean', 'UPDATE_MANAGER_ENABLED', 'true'
+		}
+		debug {
+			minifyEnabled false
+			buildConfigField 'boolean', 'CRASH_REPORTING_ENABLED', 'false'
+			buildConfigField 'boolean', 'UPDATE_MANAGER_ENABLED', 'false'
 		}
 	}
 
@@ -32,4 +66,20 @@ dependencies {
 	})
 	compile 'com.android.support:appcompat-v7:25.3.1'
 	testCompile 'junit:junit:4.12'
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+	//Reporting
+	compile 'ch.acra:acra:4.9.2'
+	compile 'net.hockeyapp.android:HockeySDK:4.1.4'
+
+	//Networking
+	compile 'com.squareup.okhttp3:okhttp:3.7.0'
+
+	//Dependency injection
+	compile "com.google.dagger:dagger:2.11-rc1"
+	annotationProcessor "com.google.dagger:dagger-compiler:2.11-rc1"
+}
+
+repositories {
+	mavenCentral()
 }
