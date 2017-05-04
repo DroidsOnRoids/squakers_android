@@ -1,6 +1,7 @@
-package com.droidsonroids.squakers
+package com.droidsonroids.squakers.app
 
 import android.app.Application
+import com.droidsonroids.squakers.BuildConfig
 import com.droidsonroids.toast.reporting.AcraHockeyReporter
 import com.droidsonroids.toast.reporting.CrashReporter
 import com.droidsonroids.toast.reporting.DebugReporter
@@ -21,10 +22,14 @@ class SquakersApp : Application() {
 
     private lateinit var crashReporter: CrashReporter
 
+    companion object {
+        lateinit var appComponent: AppComponent
+    }
+
     override fun onCreate() {
         super.onCreate()
         initCrashReporter()
-
+        initAppComponent()
     }
 
     private fun initCrashReporter() {
@@ -34,5 +39,11 @@ class SquakersApp : Application() {
             crashReporter = DebugReporter()
         }
         crashReporter.initWithApplication(this)
+    }
+
+    private fun initAppComponent() {
+        appComponent = DaggerAppComponent.builder()
+                .appModule(AppModule(this))
+                .build()
     }
 }

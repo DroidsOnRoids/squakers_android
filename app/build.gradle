@@ -72,8 +72,12 @@ dependencies {
 	compile 'ch.acra:acra:4.9.2'
 	compile 'net.hockeyapp.android:HockeySDK:4.1.4'
 
-	//Okhttp
+	//Networking
 	compile 'com.squareup.okhttp3:okhttp:3.7.0'
+
+	//Dependency injection
+	compile "com.google.dagger:dagger:2.11-rc1"
+	annotationProcessor "com.google.dagger:dagger-compiler:2.11-rc1"
 }
 
 repositories {
