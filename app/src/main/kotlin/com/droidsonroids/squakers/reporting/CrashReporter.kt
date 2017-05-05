@@ -1,4 +1,4 @@
-package com.droidsonroids.toast.reporting
+package com.droidsonroids.squakers.reporting
 
 import android.app.Application
 

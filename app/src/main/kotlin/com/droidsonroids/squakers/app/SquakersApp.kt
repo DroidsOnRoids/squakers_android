@@ -2,10 +2,10 @@ package com.droidsonroids.squakers.app
 
 import android.app.Application
 import com.droidsonroids.squakers.BuildConfig
-import com.droidsonroids.toast.reporting.AcraHockeyReporter
-import com.droidsonroids.toast.reporting.CrashReporter
-import com.droidsonroids.toast.reporting.DebugReporter
-import com.droidsonroids.toast.reporting.HockeySenderFactory
+import com.droidsonroids.squakers.reporting.AcraHockeyReporter
+import com.droidsonroids.squakers.reporting.CrashReporter
+import com.droidsonroids.squakers.reporting.DebugReporter
+import com.droidsonroids.squakers.reporting.HockeySenderFactory
 import org.acra.ReportField
 import org.acra.annotation.ReportsCrashes
 
