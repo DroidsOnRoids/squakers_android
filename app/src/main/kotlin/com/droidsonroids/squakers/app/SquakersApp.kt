@@ -42,8 +42,8 @@ class SquakersApp : Application() {
     }
 
     private fun initAppComponent() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
+//        appComponent = DaggerAppComponent.builder()
+//                .appModule(AppModule(this))
+//                .build()
     }
 }
