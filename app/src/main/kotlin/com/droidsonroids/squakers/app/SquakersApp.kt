@@ -22,14 +22,9 @@ class SquakersApp : Application() {
 
     private lateinit var crashReporter: CrashReporter
 
-    companion object {
-        lateinit var appComponent: AppComponent
-    }
-
     override fun onCreate() {
         super.onCreate()
         initCrashReporter()
-        initAppComponent()
     }
 
     private fun initCrashReporter() {
@@ -39,11 +34,5 @@ class SquakersApp : Application() {
             crashReporter = DebugReporter()
         }
         crashReporter.initWithApplication(this)
-    }
-
-    private fun initAppComponent() {
-//        appComponent = DaggerAppComponent.builder()
-//                .appModule(AppModule(this))
-//                .build()
     }
 }

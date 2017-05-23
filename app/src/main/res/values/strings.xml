@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Squakers</string>
+    <string name="dribbble_name">Dribbble</string>
+    <string name="medium_name">Medium</string>
 </resources>
