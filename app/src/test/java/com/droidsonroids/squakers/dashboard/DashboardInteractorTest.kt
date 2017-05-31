@@ -20,7 +20,7 @@ class DashboardInteractorTest {
         presenter = mock(DashboardPresenter::class.java)
         servicesProvider = mock(ServicesProvider::class.java)
         interactor = DashboardInteractor()
-        interactor.setPresenter(presenter)
+        interactor.presenter = presenter
         interactor.servicesProvider = servicesProvider
     }
 

@@ -44,7 +44,12 @@
     </android.support.design.widget.AppBarLayout>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/servicesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <com.droidsonroids.squakers.custom.view.GradientFab
             android:id="@+id/floatingActionButton"
@@ -58,10 +63,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.95"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/servicesRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
     </android.support.constraint.ConstraintLayout>
 </android.support.design.widget.CoordinatorLayout>

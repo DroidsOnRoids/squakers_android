@@ -16,7 +16,7 @@ class DashboardPresenterTest {
         view = mock(DashboardView::class.java)
         interactor = mock(DashboardInteractor::class.java)
         presenter = DashboardPresenter()
-        presenter.setView(view)
+        presenter.view = view
         presenter.setInteractor(interactor)
     }
 

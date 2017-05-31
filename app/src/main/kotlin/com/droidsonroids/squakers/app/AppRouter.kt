@@ -14,7 +14,7 @@ class AppRouter @Inject constructor(val interactor: AppInteractor) {
         interactor.start()
     }
 
-    fun attachDashboardRiblet() {
+    fun attachDashboard() {
         dashboardRouter = DashboardBuilder().build(appComponent)
         dashboardRouter.start()
     }

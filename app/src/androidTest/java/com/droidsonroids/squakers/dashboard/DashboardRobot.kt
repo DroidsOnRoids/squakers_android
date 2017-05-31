@@ -8,7 +8,7 @@ fun onDashboard(func: com.droidsonroids.squakers.dashboard.DashboardRobot.() -> 
 
 class DashboardRobot {
 
-    private val ALL_ITEMS_COUNT = 2
+    private val ALL_ITEMS_COUNT = 5
     fun isFabVisible(): com.droidsonroids.squakers.dashboard.DashboardRobot {
         onView(withId(com.droidsonroids.squakers.R.id.floatingActionButton)).check(matches(isDisplayed()))
         return this

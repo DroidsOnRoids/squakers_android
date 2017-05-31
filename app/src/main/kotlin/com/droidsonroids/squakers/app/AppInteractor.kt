@@ -11,7 +11,7 @@ class AppInteractor @Inject constructor() {
     }
 
     fun start() {
-        appRouter.attachDashboardRiblet()
+        appRouter.attachDashboard()
     }
 
 }

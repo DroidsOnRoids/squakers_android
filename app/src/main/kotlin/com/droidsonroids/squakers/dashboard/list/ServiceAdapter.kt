@@ -2,10 +2,8 @@ package com.droidsonroids.squakers.dashboard.list
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.droidsonroids.squakers.R
 import com.droidsonroids.squakers.dashboard.model.ServiceDescriptor
 import kotlinx.android.synthetic.main.service_item.view.*
 
@@ -16,7 +14,7 @@ class ServiceAdapter(val serviceList: List<ServiceDescriptor>) : RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.service_item, parent, false)
+        val view = ServiceItemLayout(parent.context)
         return ServiceViewHolder(view)
     }
 

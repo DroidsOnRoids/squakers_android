@@ -14,8 +14,8 @@ class ServicesProviderTest{
     }
 
     @Test
-    fun shouldInitiallyRegisterProviders_all2() {
-        assertEquals(2, servicesProvider.getAllServiceDescriptors().size)
+    fun shouldInitiallyRegisterProviders_all5() {
+        assertEquals(5, servicesProvider.getAllServiceDescriptors().size)
     }
 
 }

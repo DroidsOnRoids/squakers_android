@@ -15,6 +15,12 @@ class ServicesProvider @Inject constructor() {
         providersMap.put(provider.getDescriptor().nameId, provider)
         provider = MediumServiceProvider()
         providersMap.put(provider.getDescriptor().nameId, provider)
+        provider = RedditServiceProvider()
+        providersMap.put(provider.getDescriptor().nameId, provider)
+        provider = TheVergeServiceProvider()
+        providersMap.put(provider.getDescriptor().nameId, provider)
+        provider = BehanceServiceProvider()
+        providersMap.put(provider.getDescriptor().nameId, provider)
     }
 
     fun getAllServiceDescriptors(): List<ServiceDescriptor> {
