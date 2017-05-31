@@ -10,7 +10,6 @@ import com.droidsonroids.squakers.custom.view.getPixelsFromDp
 class ServiceItemLayout(context: Context) : CardView(context) {
     init {
         radius = resources.getPixelsFromDp(10f).toFloat()
-        cardElevation = resources.getPixelsFromDp(10f).toFloat()
         LayoutInflater.from(context).inflate(R.layout.service_item, this, true)
     }
 
