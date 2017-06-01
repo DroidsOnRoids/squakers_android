@@ -23,3 +23,23 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontwarn okio.**
+
+# OKHTTP
+-dontwarn com.squareup.okhttp.*
+
+# ACRA
+-keep class org.acra.ACRA { *; }
+-keep class org.acra.ReportingInteractionMode { *; }
+-keep class org.acra.annotation.* {    *;}
+-keep class org.acra.ACRAConfiguration {    *;}
+-keep class org.acra.log.ACRALog {    *;}
+-keepnames class org.acra.ReportField {    *;}
+-keep public class org.acra.ErrorReporter {
+    public void addCustomData(java.lang.String,java.lang.String);
+    public void putCustomData(java.lang.String,java.lang.String);
+    public void removeCustomData(java.lang.String);
+    public void handleSilentException(java.lang.Throwable);
+    public void handleException(java.lang.Throwable);
+}
