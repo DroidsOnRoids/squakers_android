@@ -1,14 +1,14 @@
 package com.droidsonroids.squakers.app
 
-import android.content.Context
+import android.widget.FrameLayout
 import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule(val application: SquakersApp) {
+class AppModule(val rootLayout: FrameLayout) {
 
     @Provides
-    fun provideContext() : Context {
-        return application.applicationContext
+    fun provideRootLayout() : FrameLayout {
+        return rootLayout
     }
 }
